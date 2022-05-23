@@ -1,0 +1,17 @@
+FROM ubuntu:20.04
+ENV NVM_DIR=/root/.nvm
+ENV NODE_VERSION=16.4.2
+ENV DEBIAN_FRONTEND noninteractive
+
+# Install CURL, NodeJs, npm, yarn
+RUN apt-get update
+RUN apt-get -y install git build-essential
+RUN apt-get -y install curl
+
+# Install Node version manager
+RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+RUN . $HOME/.nvm/nvm.sh && nvm install $NODE_VERSION && nvm alias default $NODE_VERSION && nvm use default
+
+# Install npm and yarn
+RUN apt-get -y install npm
+RUN npm install -g yarn@1.22.18
