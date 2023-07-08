@@ -1,0 +1,44 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drpawspaw-ui-deployment
+  namespace: dev
+  labels:
+    app: drpawspaw-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: drpawspaw-ui
+  template:
+    metadata:
+      labels:
+        app: drpawspaw-ui
+    spec:
+      containers:
+      - name: drpawspaw-ui-container
+        image: vitiya99/drpawspaw-ui-builder:1.0.0
+        ports:
+        - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: drpawspaw-ui-service
+  namespace: dev
+spec:
+  selector:
+    app: drpawspaw-ui
+  ports:
+    - port: 80
+      targetPort: 80
+  type: LoadBalancer
