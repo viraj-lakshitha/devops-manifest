@@ -1,12 +1,5 @@
-# docker-scripts
-Dockerfile (s) for the custom images that are created for personal projects
+# DevOps Manifests
 
-### vitiya99/react-base
+DevOps files/scripts related to personal developments and deployments
 
-#### v1.0.0
-Base Image - Ubuntu 20.4
-Git, NodeJs, Npm, Yarn installed
-
-#### v1.0.1
-Base Image - v1.0.0
-Install cypress prerequisites
+DockerHub - https://hub.docker.com/repositories/vitiya99
